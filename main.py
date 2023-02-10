@@ -8,7 +8,6 @@ import logging
 from Config import AppConfig
 import setup
 
-BIGBAG = "Bigbag"
 
 ext_list = [
     "aac",
