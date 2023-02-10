@@ -1,1 +1,5 @@
-done_files.json
+/Pipfile
+/Pipfile.lock
+/log/
+/tmp/
+/vault/
