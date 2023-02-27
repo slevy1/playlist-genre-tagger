@@ -84,7 +84,7 @@ def apply_genre(f, new_genre_str, remove_genre=None):
     new_genre = []
     for x in range(0, len(genre)):
         genre[x] = genre[x].strip(" ;'/][<>")
-        if genre[x] != '' and genre[x] not in new_genre and genre[x] != remove_genre:
+        if genre[x] != '' and genre[x] not in new_genre and genre[x] != remove_genre and genre[x] != new_genre_str:
             new_genre.append(genre[x])
     new_genre.append(new_genre_str)
     f['genre'] = ";".join(new_genre)
