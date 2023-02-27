@@ -50,7 +50,7 @@ def tag_music_files_in_path(playlist_path: Path, do_all=False):
                 logging.debug(f['genre'].values)
                 if do_all or ('Bigbag' not in f['genre'].values and 'Bigbag' not in str(f['genre'].values)):
                     logging.debug("Bigbag missing")
-                    apply_genre(f, "Bigbag")
+                    apply_genre(f, "Bigbag", "Xigbag")
                     logging.debug(f['genre'])
                 if compat_file not in done_files:
                     done_files.append(compat_file)
@@ -81,11 +81,12 @@ def tag_music_files_in_path(playlist_path: Path, do_all=False):
 
 def apply_genre(f, new_genre_str, remove_genre=None):
     genre = str(f['genre']).replace(",", ";").split(";")
-    new_genre = [new_genre_str]
+    new_genre = []
     for x in range(0, len(genre)):
         genre[x] = genre[x].strip(" ;'/][<>")
         if genre[x] != '' and genre[x] not in new_genre and genre[x] != remove_genre:
             new_genre.append(genre[x])
+    new_genre.append(new_genre_str)
     f['genre'] = ";".join(new_genre)
     f.save()
 
